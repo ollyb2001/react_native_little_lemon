@@ -7,15 +7,6 @@ import Header from '../components/Header';
 
 export default function Onboarding() {
 
-  const handleReset = async () => {
-    try {
-      await AsyncStorage.removeItem('@first_name');
-      await AsyncStorage.removeItem('@email');
-      await AsyncStorage.removeItem('@profileImage'); 
-    } catch (error) {
-      console.error("Error resetting data", error);
-    }
-  };
 
     //Navigation
     const navigation = useNavigation();
@@ -53,7 +44,7 @@ export default function Onboarding() {
       };
 
       useEffect(() => {
-        handleReset();
+   
       }
       , []);
         

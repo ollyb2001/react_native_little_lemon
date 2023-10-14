@@ -13,6 +13,7 @@ export default function Categories() {
     // Calculate categories from menuData
     const categories = [...new Set(menuData.map(item => item.category))];
 
+    // Function to handle category selection and update activeCategories
     const handleSelectCategory = category => {
         setActiveCategories(prev => 
             prev.includes(category) 
@@ -28,7 +29,7 @@ export default function Categories() {
     
             if (data?.menu?.length) {
                 for (const item of data.menu) {
-                    // Ensure that item is not inserted multiple times
+                    // Ensure that item is not inserted multiple times FIXED
                     await insertItem(item.name, item.price, item.description, item.image, item.category);
                 }
                 setMenuData(data.menu);
