@@ -117,20 +117,18 @@ export default function Profile() {
 
     // Function to select profile image from media library
 
-  const selectProfileImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-
-    // Check if the user cancelled the image selection
-
-    if (!result.canceled) {
-      const imageUri = result.assets[0].uri;
-      setProfileImage(imageUri);
-    }
+    const selectProfileImage = async () => {
+      let result = await ImagePicker.launchImageLibraryAsync({
+          // ... (rest of your configuration)
+      });
+  
+      if (!result.canceled) {
+          const imageUri = result.assets[0].uri;
+          setProfileImage(imageUri);
+          
+          // Save the URI to AsyncStorage
+          await AsyncStorage.setItem('@profileImage', imageUri);
+      }
   };
 
 return ( 

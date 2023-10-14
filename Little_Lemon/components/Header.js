@@ -33,9 +33,28 @@ useEffect(() => {
         console.log('Error @isUserSignedIn: ', err);
       }
     };
+
+    const fetchProfileImage = async () => {
+      try {
+          const savedImageUri = await AsyncStorage.getItem('@profileImage');
+          if (savedImageUri) {
+              setProfileImage(savedImageUri);
+          }
+      } catch (error) {
+          console.log('Error fetching profile image:', error);
+      }
+  };
+
+  // Fetch the profile image when component mounts
+    fetchProfileImage();
   
+  // Check if user is signed in when component mounts
     checkIfSignedIn();
-  }, []);
+
+ // Add listener to fetch profile image when screen is focused
+    const unsubscribe = navigation.addListener('focus', fetchProfileImage);
+    return unsubscribe;
+}, [navigation]);
   
 
 
@@ -89,5 +108,6 @@ const styles = StyleSheet.create({
       buttonImage: {
         width: 40, 
         height: 40,
+        borderRadius: 25,
       },
 })
