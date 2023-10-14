@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   placeholderContainer: {
-    backgroundColor: 'gray', // or any other color
+    backgroundColor: 'gray',
     justifyContent: 'center',
     alignItems: 'center',
 },
