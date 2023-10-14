@@ -135,7 +135,7 @@ return (
 
 <View style={styles.container}>
       
-    <Header />
+      <Header showBackButton={true} />
       <View style={styles.body}>
         <View style={styles.bodyHeaderSection}>
           <Text style={styles.bodyText}>Personal Information</Text>
@@ -185,7 +185,7 @@ return (
             style={styles.TextInputStyle}
             onChangeText={setPhoneNumber}
             value={phoneNumber}
-            placeholder="Phone Number"
+            placeholder="(000) 000 0000"
           />
         </View>
         <View style={styles.bodyHeaderSection}>
@@ -229,10 +229,10 @@ return (
       </View>
       <View style={styles.footer}>
         <TouchableOpacity style={styles.resetButton} onPress={handleSubmit}>
-          <Text style={styles.resetButtonText}>Continue</Text>
+          <Text style={styles.resetButtonText}>Save Changes</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.resetButton} onPress={handleReset}>
-          <Text style={styles.resetButtonText}>Reset</Text>
+          <Text style={styles.resetButtonText}>Log Out</Text>
         </TouchableOpacity>
       </View>
     </View>

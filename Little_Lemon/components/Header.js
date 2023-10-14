@@ -5,7 +5,7 @@ import { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-export default function Header() {
+export default function Header({ showBackButton }) {
 
 // Navigation
 const navigation = useNavigation();
@@ -62,6 +62,20 @@ useEffect(() => {
     
 
     <View style={styles.container}>
+
+{showBackButton && (
+  <TouchableOpacity
+    style={styles.backButton}
+    onPress={() => navigation.goBack()}
+    accessible={true}
+    accessibilityLabel="Go back"
+    accessibilityHint="Navigates to the previous screen"
+  >
+    <Text style={styles.backButtonText}>Back</Text>
+  </TouchableOpacity>
+)}
+
+
       <Image source={require('../assets/Logo.png')} style={styles.logo} />
 
     {isUserSignedIn && (
@@ -89,6 +103,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
+        flexDirection: 'row',
       },
       logo: {
         marginTop: 40,
@@ -109,5 +124,19 @@ const styles = StyleSheet.create({
         width: 40, 
         height: 40,
         borderRadius: 25,
+      },
+
+      backButton: {
+        position: 'absolute',
+        left: 20,
+        top: 50,
+        width: 40,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      backButtonText: {
+        color: 'black',
+        fontSize: 16,
       },
 })
